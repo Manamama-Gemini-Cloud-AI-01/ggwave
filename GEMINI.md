@@ -50,6 +50,15 @@ Setting up portaudio-static (19.07.00-2) ...
 ```
 This replaced the incorrect `libportaudio.so` with one compiled specifically for the Android/Termux environment that links against `libOpenSLES.so`, the native audio API for Android.
 
+
+Then this: 
+`ln -s /data/data/com.termux/files/usr/lib/libOpenSLES.so /data/data/com.termux/files/usr/lib/libpulse.so.1`
+
+and
+
+`ln -s /data/data/com.termux/files/usr/lib/libOpenSLES.so /data/data/com.termux/files/usr/lib/libpulse.so.0`
+
+
 **Action 2: Update Build System Requirements**
 A critical change was made to the `CMakeLists.txt` file to ensure the project could be built correctly.
 
