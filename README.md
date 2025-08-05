@@ -41,16 +41,6 @@ Here is a list of possible applications of **ggwave** with a few examples:
 - **Device pairing**
 - **Authorization**
 
-## Platform Notes
-
-### Android (via Termux)
-
-To build on Termux, you will need to install the following dependencies:
-
-```bash
-pkg install portaudio-static libglvnd-dev
-```
-
 ## Try it out
 
 You can easily test the library using the free [waver](https://github.com/ggerganov/ggwave/tree/master/examples/waver) application which is available on the following platforms:
