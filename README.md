@@ -33,14 +33,33 @@ Here is a list of possible applications of **ggwave** with a few examples:
 - **Serverless, one-to-many broadcast**
   - [wave-share](https://github.com/ggerganov/wave-share) - file sharing through sound
 - **Internet of Things**
-  - [esp32-rx](https://github.com/ggerganov/ggwave/tree/master/examples/esp32-rx), [arduino-rx](https://github.com/ggerganov/ggwave/tree/master/examples/arduino-rx), [rp2040-rx](https://github.com/ggerganov/ggwave/tree/master/examples/rp2040-rx), [arduino-tx](https://github.com/ggerganov/ggwave/tree/master/examples/arduino-tx) - Send and receive sound data on microcontrollers
+  - [esp32-rx](https://github.com/ggerganov/ggwave/tree/master/examples/esp32-rx), [arduino-rx](https://github.com/ggerganov/ggwave/tree/master/examples/arduino-rx), [rp2040-rx](https://github.com/ggerganov/ggwave/tree/master/examples/rp2040-rx), [arduino-tx](https://github.com/ggerganov/ggwave/tree/master/examples/arduino-tx) - Sand and receive sound data on microcontrollers
   - [r2t2](https://github.com/ggerganov/ggwave/tree/master/examples/r2t2) - Transmit data with the PC speaker
   - [buttons](https://github.com/ggerganov/ggwave/tree/master/examples/buttons) - Record and send commands via [Talking buttons](https://github.com/ggerganov/ggwave/discussions/27)
 - **Audio QR codes**
   - [[Twitter]](https://twitter.com/ggerganov/status/1509558482567057417) - Broadcast your clipboard to nearby devices
-- **Device pairing / Contact exchange**
-  - [PairSonic](https://github.com/seemoo-lab/pairsonic) - Exchange contact information and public keys with nearby devices
+- **Device pairing**
 - **Authorization**
+
+## Platform Notes
+
+### Android (via Termux)
+
+The project is now fully functional on Android via Termux after applying the following fixes:
+
+**1. Build System Update:**
+The `CMakeLists.txt` was updated to require `cmake` version 3.10+. This is a prerequisite for a successful build on modern systems.
+```diff
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.10)
+```
+
+**2. Correct Audio Library Installation:**
+The original library dependency caused session crashes on Android. The fix is to install the native Termux `portaudio-static` package, which uses the correct OpenSL ES audio backend instead of PulseAudio.
+```bash
+pkg install portaudio-static
+```
+With these changes, the project builds and runs correctly, enabling the audio examples.
 
 ## Try it out
 
@@ -119,7 +138,6 @@ The [examples](https://github.com/ggerganov/ggwave/blob/master/examples/) folder
 | [r2t2](https://github.com/ggerganov/ggwave/blob/master/examples/r2t2) | Transmit data through the PC speaker | PC speaker |
 | [ggwave-objc](https://github.com/ggerganov/ggwave-objc) | Minimal Objective-C iOS app using ggwave | AudioToolbox |
 | [ggwave-java](https://github.com/ggerganov/ggwave-java) | Minimal Java Android app using ggwave | android.media |
-| [ggwave-kmm](https://github.com/wooram-yang/ggwave-kmm) | Kotlin Multiplatform Project using ggwave | android.media, javax.sound.sampled |
 | [ggwave-fm](https://github.com/rgerganov/ggwave-fm) | Transmit ggwave messages with HackRF | Radio |
 | [esp32-rx](https://github.com/ggerganov/ggwave/tree/master/examples/esp32-rx) | Transmit and receive messages using ESP32 | - |
 | [rp2040-rx](https://github.com/ggerganov/ggwave/tree/master/examples/rp2040-rx) | Transmit and receive messages using Raspberry Pi Pico (RP2040) | - |
