@@ -1,6 +1,17 @@
 cmake_minimum_required (VERSION 3.10)
 project(ggwave VERSION 0.4.2)
 
+# Initialize and update Git submodules
+execute_process(COMMAND git submodule update --init --recursive
+                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                RESULT_VARIABLE submodule_result
+                OUTPUT_VARIABLE submodule_output
+                ERROR_VARIABLE submodule_error)
+
+if(NOT submodule_result EQUAL 0)
+    message(FATAL_ERROR "Failed to initialize submodules: ${submodule_error}")
+endif()
+
 set(GGWAVE_VERSION_PYTHON 0.4.2)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS "on")
