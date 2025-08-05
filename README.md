@@ -45,21 +45,11 @@ Here is a list of possible applications of **ggwave** with a few examples:
 
 ### Android (via Termux)
 
-The project is now fully functional on Android via Termux after applying the following fixes:
+To build on Termux, you will need to install the following dependencies:
 
-**1. Build System Update:**
-The `CMakeLists.txt` was updated to require `cmake` version 3.10+. This is a prerequisite for a successful build on modern systems.
-```diff
--cmake_minimum_required (VERSION 3.0)
-+cmake_minimum_required (VERSION 3.10)
-```
-
-**2. Correct Audio Library Installation:**
-The original library dependency caused session crashes on Android. The fix is to install the native Termux `portaudio-static` package, which uses the correct OpenSL ES audio backend instead of PulseAudio.
 ```bash
-pkg install portaudio-static
+pkg install portaudio-static libglvnd-dev
 ```
-With these changes, the project builds and runs correctly, enabling the audio examples.
 
 ## Try it out
 
