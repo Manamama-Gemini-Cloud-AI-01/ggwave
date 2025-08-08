@@ -26,6 +26,10 @@ This confirms that we have created a functional "mini audio station." This devic
 
 Despite previous attempts to clean and update the `examples/third-party/ggsock` submodule, compilation continues to fail with the error: `The source directory .../ggsock does not contain a CMakeLists.txt file.` This indicates a fundamental issue with how the `ggsock` submodule is being integrated or its expected structure.
 
+**Diagnosis:** On this machine, `CMakeLists.txt` *does* exist within the `examples/third-party/ggsock` directory. This suggests the error on the other machine is due to the submodule not being properly initialized or updated.
+
+**Solution for Other Machines:** Ensure the repository is cloned with submodules (`git clone --recursive <repo_url>`), or manually initialize and update submodules (`git submodule update --init --recursive`).
+
 ---
 
 ## SOLVED: The `libportaudio.so` and PulseAudio Issue
