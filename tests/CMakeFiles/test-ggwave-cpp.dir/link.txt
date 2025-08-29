@@ -1,0 +1,1 @@
+/data/data/com.termux/files/usr/bin/clang++ -Wno-error=implicit-function-declaration -Wall -Wextra -pedantic -O2 -g -DNDEBUG -Xlinker --dependency-file=CMakeFiles/test-ggwave-cpp.dir/link.d "CMakeFiles/test-ggwave-cpp.dir/test-ggwave.cpp.o" -o ../bin/test-ggwave-cpp  -Wl,-rpath,/data/data/com.termux/files/home/downloads/GitHub/ggwave/src ../src/libggwave.so -ldl
