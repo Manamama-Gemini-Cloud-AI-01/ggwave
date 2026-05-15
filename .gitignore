@@ -8,3 +8,15 @@ compile_commands.json
 .*.swp
 .ycm_extra_conf.py
 .DS_Store
+
+# CMake build artifacts
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+*.so
+*.a
+*.o
+bin/
+
