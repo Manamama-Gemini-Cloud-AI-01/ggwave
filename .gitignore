@@ -19,4 +19,6 @@ Makefile
 *.a
 *.o
 bin/
+CPackConfig.cmake
+CPackSourceConfig.cmake
 
