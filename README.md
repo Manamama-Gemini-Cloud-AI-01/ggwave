@@ -222,6 +222,10 @@ sudo snap connect waver:audio-record :audio-record
   brew install ggerganov/ggerganov/waver
   ```
 
+## References
+
+- [Evaluating Acoustic Data Transmission Schemes for Ad-Hoc Communication Between Nearby Smart Devices](https://dl.acm.org/doi/10.1145/3779439)
+
 [changelog]: ./CHANGELOG.md
-[changelog-badge]: https://img.shields.io/badge/changelog-ggwave%20v0.4.2-dummy
+[changelog-badge]: https://img.shields.io/badge/changelog-ggwave%20v0.4.3-dummy
 [license]: ./LICENSE

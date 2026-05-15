@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.10)
-project(ggwave VERSION 0.4.2)
+project(ggwave VERSION 0.4.3)
 
 # Initialize and update Git submodules
 execute_process(COMMAND git submodule update --init --recursive
@@ -12,7 +12,7 @@ if(NOT submodule_result EQUAL 0)
     message(FATAL_ERROR "Failed to initialize submodules: ${submodule_error}")
 endif()
 
-set(GGWAVE_VERSION_PYTHON 0.4.2)
+set(GGWAVE_VERSION_PYTHON 0.4.3)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS "on")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -39,6 +39,7 @@ if (EMSCRIPTEN)
     set(BUILD_SHARED_LIBS_DEFAULT OFF)
 
     option(GGWAVE_WASM_SINGLE_FILE "ggwave: embed WASM inside the generated ggwave.js" ON)
+    set(CMAKE_CXX_STANDARD 17)
 else()
     set(GGWAVE_SUPPORT_SDL2_DEFAULT ON)
     if (WIN32)
@@ -88,7 +89,9 @@ endif()
 
 # main
 
-set(CMAKE_CXX_STANDARD 11)
+if (NOT EMSCRIPTEN)
+  set(CMAKE_CXX_STANDARD 11)
+endif()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if (GGWAVE_ALL_WARNINGS)
