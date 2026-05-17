@@ -166,6 +166,9 @@ make
 sudo make install
 ```
 
+> [!IMPORTANT]
+> **Permissions Note:** Always run `make` as a normal user first. If you run `sudo make install` before the build is finished, it may attempt to compile the Python bindings as root, which will fail to find your local `cython` installation and may corrupt file permissions in the repository. If this happens, run `sudo chown $USER:$USER -R .` to restore ownership.
+
 This will install the following tools to `/usr/local/bin`:
 - `ggwave-cli`: Interactive or piped command line tool for sending/receiving data.
 - `ggwave-to-file`: Encode text into a WAV file.
