@@ -113,6 +113,10 @@ int main(int argc, char** argv) {
                 std::lock_guard<std::mutex> lock(mutex);
                 ggWave->init(input.size(), input.data(), GGWave::TxProtocolId(txProtocolId), 10);
             }
+            // give the main thread a tiny bit of time to pick up the new data
+            if (!isInteractive) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            }
             inputOld = input;
         }
     });
