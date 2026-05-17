@@ -101,6 +101,12 @@ int main(int argc, char** argv) {
                     continue;
                 }
             } else {
+                if (!isInteractive) {
+                    // when piping, wait for the previous transmission to finish
+                    while (isRunning && (ggWave->txHasData() || GGWave_txPlaying())) {
+                        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+                    }
+                }
                 printf("Sending ...\n");
             }
             {
